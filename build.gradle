@@ -1,0 +1,50 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'org.springframework.boot' version '2.3.12.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+apply from: "config.gradle"
+
+allprojects {
+    group "org.willxu"
+    version "${project_version}"
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "org.springframework.boot"
+    apply plugin: "io.spring.dependency-management"
+    sourceCompatibility = 16
+    targetCompatibility = 16
+
+    tasks.withType(AbstractCompile).each { it.options.encoding = "${default_encoding}"}
+    javadoc {
+        options.encoding = "${default_encoding}"
+        // todo What's this?
+        options.addBooleanOption('Xdoclint:none', true)
+    }
+    compileJava.dependsOn(processResources)
+
+    springBoot {
+        buildInfo()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${spring_cloud_version}"
+            mavenBom SpringBootPlugin.BOM_COORDINATES
+        }
+    }
+
+    dependencies {
+
+    }
+}

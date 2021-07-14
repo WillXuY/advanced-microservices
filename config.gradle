@@ -1,0 +1,6 @@
+ext {
+    project_version = "0.0.1-SNAPSHOT"
+    default_encoding = "UTF-8"
+    spring_boot_version = "2.3.12.RELEASE"
+    spring_cloud_version = "Hoxton.SR12"
+}
