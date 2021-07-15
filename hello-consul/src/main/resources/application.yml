@@ -1,0 +1,9 @@
+server:
+  port: 18500
+spring:
+  application:
+    name: hello-consul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
