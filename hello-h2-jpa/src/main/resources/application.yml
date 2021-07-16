@@ -1,0 +1,18 @@
+server:
+  port: 18600
+spring:
+  application:
+    name: hello-h2-jpa
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+  datasource:
+    # in memory
+    url: jdbc:h2:mem:jpadb
+    username: sa
+    password: mypass
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect

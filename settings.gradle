@@ -2,3 +2,4 @@ rootProject.name = 'advanced-microservices'
 
 include 'hello-gradle'
 include 'hello-consul'
+include 'hello-h2-jpa'
